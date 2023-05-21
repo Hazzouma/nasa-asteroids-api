@@ -69,3 +69,19 @@ The project repository consists of the following folders:
 
 - backend-asteroids: Contains the backend server code built with Node.js (Express).
 - frontend-asteroids: Contains the frontend React application code.
+
+# SQL Test Challenge:
+
+The single SQL query would be:
+
+```shell
+SELECT a.name, a.email, SUM(b.quantity * c.price)
+AS total_amount
+FROM users a,
+orders b,
+products c
+WHERE c.category = 'Electronics' AND a.id = b.user_id AND b.product_id = c.id
+HAVING COUNT(b.id) >= 3 AND total_amount > 1000
+GROUP BY a.id, a.name, a.email
+ORDER BY total_amount DESC;
+```
